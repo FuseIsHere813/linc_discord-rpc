@@ -210,8 +210,15 @@ typedef DiscordPresenceOptions = {
     @:optional var instance : Int;
 }
 
-@:enum abstract Reply(Int) from Int to Int {
+#if (haxe >= "4.3.0")
+    enum abstract Reply(Int) from Int to Int {
     var No = 0;
     var Yes = 1;
     var ignore = 2;
 }
+#else
+@:enum abstract Reply(Int) from Int to Int {
+    var No = 0;
+    var Yes = 1;
+    var ignore = 2;
+} // fixes 4.3 haxe enum deprecation warnings
